@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import DefaultLayout from '@/layouts/templates/DefaultLayout.astro'
+// Import other templates here
+
+import { loadCVData } from '@/utils/data'
+import { getActiveTemplateName } from '@/utils/templates'
+import type { CVData } from '@/types/cv'
+
+const cv: CVData = await loadCVData()
+const templateName = getActiveTemplateName()
+
+const templateLayouts = {
+  default: DefaultLayout,
+  // modern: ModernLayout,
+  // minimal: MinimalLayout,
+} as const
+
+const TemplateLayout =
+  templateLayouts[templateName as keyof typeof templateLayouts] ||
+  templateLayouts.default
+---
+
+<BaseLayout title={`${cv.personal.name} - CV`}>
+  <TemplateLayout cv={cv} />
+</BaseLayout>

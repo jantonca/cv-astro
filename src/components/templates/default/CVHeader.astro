@@ -1,0 +1,16 @@
+---
+const { data } = Astro.props
+---
+
+<header class='cv-mb-2xl'>
+  <h1
+    class='cv-text-2xl font-bold cv-text-primary leading-tight cv-mb-sm tracking-tight'
+  >
+    {data.name}
+  </h1>
+  <p
+    class='professional-title cv-text-lg font-light cv-text-subtle cv-mb-2xl tracking-wide'
+  >
+    {data.title}
+  </p>
+</header>

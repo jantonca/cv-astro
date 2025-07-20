@@ -1,0 +1,30 @@
+---
+import type { EducationProps } from '@/types/cv'
+
+interface Props extends EducationProps {}
+const { education } = Astro.props
+---
+
+<section class='education cv-mb-3xl'>
+  <h2>Education</h2>
+  {
+    education.map((item) => (
+      <div class='education-item cv-mb-2xl education-timeline-item relative'>
+        <h3 class='cv-text-lg font-semibold cv-text-primary cv-mb-xs'>
+          {item.degree}
+        </h3>
+        <div class='education-school font-medium cv-text-primary cv-mb-md cv-text-sm'>
+          {item.school}
+        </div>
+        <div class='education-year cv-text-xs font-medium cv-text-accent tracking-wide cv-mb-md'>
+          {item.year}
+        </div>
+        {item.details && (
+          <p class='cv-text-sm leading-relaxed cv-text-secondary cv-mb-sm'>
+            {item.details}
+          </p>
+        )}
+      </div>
+    ))
+  }
+</section>

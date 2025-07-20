@@ -1,0 +1,22 @@
+---
+import type { LanguagesProps } from '@/types/cv'
+
+interface Props extends LanguagesProps {}
+const { data } = Astro.props
+---
+
+<section class='languages cv-mb-3xl'>
+  <h2>Languages</h2>
+  <div class='languages-list cv-text-sm leading-relaxed'>
+    {
+      data.map((lang) => (
+        <div class='language-item flex justify-between cv-mb-sm'>
+          <span class='cv-text-secondary'>{lang.language}</span>
+          <span class='language-level cv-text-xs cv-text-subtle'>
+            {lang.level}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</section>

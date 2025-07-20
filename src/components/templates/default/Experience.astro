@@ -1,0 +1,32 @@
+---
+import type { ExperienceProps } from '@/types/cv'
+
+interface Props extends ExperienceProps {}
+const { experience } = Astro.props
+---
+
+<section class='experience cv-mb-3xl'>
+  <h2>Professional Experience</h2>
+  {
+    experience.map((item) => (
+      <div class='experience-item cv-mb-2xl experience-timeline-item relative'>
+        <div class='item-header flex justify-between items-baseline cv-mb-xs'>
+          <h3 class='cv-text-lg font-semibold cv-text-primary'>{item.title}</h3>
+          <div class='duration cv-text-xs font-medium cv-text-accent tracking-wide'>
+            {item.duration}
+          </div>
+        </div>
+        <div class='company font-medium cv-text-primary cv-mb-md cv-text-sm'>
+          {item.company}
+        </div>
+        <ul class='experience-highlights'>
+          {item.highlights.map((highlight) => (
+            <li class='cv-text-sm leading-relaxed cv-text-secondary'>
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>

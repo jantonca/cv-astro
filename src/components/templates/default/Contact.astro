@@ -1,0 +1,56 @@
+---
+const { data } = Astro.props
+---
+
+<section class='cv-mb-3xl'>
+  <h2>Contact</h2>
+  <ul class='contact-info flex flex-col cv-gap-md list-none p-0 cv-text-sm'>
+    {
+      data.email && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          {data.email}
+        </li>
+      )
+    }
+    {
+      data.phone && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          {data.phone}
+        </li>
+      )
+    }
+    {
+      data.location && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          {data.location}
+        </li>
+      )
+    }
+    {
+      data.website && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          <a
+            href={data.website}
+            target='_blank'
+            class='cv-text-secondary hover:cv-text-accent transition-colors duration-300'
+          >
+            {data.website.replace('https://www.', '')}
+          </a>
+        </li>
+      )
+    }
+    {
+      data.portfolio && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          <a
+            href={data.portfolio}
+            target='_blank'
+            class='cv-text-secondary hover:cv-text-accent transition-colors duration-300'
+          >
+            {data.portfolio.replace('https://www.', '')}
+          </a>
+        </li>
+      )
+    }
+  </ul>
+</section>

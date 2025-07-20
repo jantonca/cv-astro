@@ -1,0 +1,117 @@
+{
+  "personal": {
+    "name": "Josemi Anton",
+    "title": "Senior Front End Engineer",
+    "email": "{yourname@youremail.com}",
+    "phone": "{0437 555 777}",
+    "location": "Sydney, Australia",
+    "website": "https://www.josemianton.com",
+    "portfolio": "https://www.bobeliadesign.com"
+  },
+  "summary": "Passionate Web Designer & Developer with expertise in crafting exceptional digital experiences. I specialize in building scalable applications using modern frontend frameworks and backend systems. My approach combines technical excellence with creative problem-solving, collaborating closely with clients to transform their visions into reality. With a diverse IT background, I excel in both independent and team environments, consistently delivering high-quality solutions guided by industry best practices.",
+  "experience": [
+    {
+      "title": "Senior Front End Engineer",
+      "company": "Rotor Studios",
+      "duration": "Nov 2023 - Present",
+      "highlights": [
+        "Architected and scaled web applications for Toyota, Lexus and Nissan that serve millions of users globally.",
+        "Built an enterprise-grade applications with React, TypeScript, Next.js and Astro focused on performance and reusability.",
+        "Implemented cutting-edge WebGL and VR/AR features through cross-functional collaboration with design and backend teams."
+      ]
+    },
+    {
+      "title": "Senior Web Developer",
+      "company": "Pedestrian Group (Nine Group)",
+      "duration": "Jan 2022 - Nov 2023",
+      "highlights": [
+        "Engineered advanced, custom WordPress themes and plugins, integrating React to build dynamic and interactive front-end experiences.",
+        "Delivered comprehensive full-stack solutions that enhanced site performance and demonstrably increased user engagement."
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "The Intermedia Group Pty Ltd",
+      "duration": "Aug 2018 - Dec 2021",
+      "highlights": [
+        "Engineered custom WordPress websites and standalone PHP applications, providing full-cycle development from initial design through to deployment.",
+        "Translated specific client requirements and business objectives into robust technical solutions, including custom themes, plugins, and tailored web applications."
+      ]
+    },
+    {
+      "title": "Web Developer",
+      "company": "Made Agency",
+      "duration": "Nov 2016 - Jul 2018",
+      "highlights": [
+        "Served as the lead web developer in a design-centric agency, responsible for translating high-fidelity visual concepts into pixel-perfect, functional WordPress websites.",
+        "Architected and built custom, high-performance WordPress themes and plugins from the ground up to solve unique business challenges for a diverse client portfolio."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Diploma of Information Technology",
+      "school": "Academies Australasia Polytechnic",
+      "year": "2016",
+      "details": "Focused on Front-End & Web Development"
+    },
+    {
+      "degree": "Advanced Diploma of Website Development",
+      "school": "CIPSA - Bilbao, Spain",
+      "year": "2013",
+      "details": "Practical training in modern web design & development"
+    },
+    {
+      "degree": "Advanced Diploma of Information Technology",
+      "school": "Salesianos Deusto College",
+      "year": "2003",
+      "details": "Foundations in software, networking & digital systems"
+    }
+  ],
+  "skills": {
+    "Frontend Development": [
+      "React.js",
+      "Next.js",
+      "Astro",
+      "TypeScript",
+      "JavaScript ES6+",
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "Responsive Design",
+      "UI/UX Principles",
+      "GraphQL",
+      "React Query/TanStack Query"
+    ],
+    "Backend & Infrastructure": [
+      "Node.js",
+      "PHP",
+      "MySQL",
+      "REST APIs",
+      "AWS (S3, EC2, LightSail)",
+      "Web Services"
+    ],
+    "Tools & Platforms": [
+      "WordPress",
+      "WooCommerce",
+      "CloudCannon",
+      "HubSpot",
+      "Git",
+      "GitHub",
+      "Webpack",
+      "Vite",
+      "Vercel",
+      "SonarCloud",
+      "Rollout",
+      "Jira",
+      "Confluence",
+      "Bitbucket",
+      "Trello",
+      "Adobe Creative Suite"
+    ]
+  },
+  "languages": [
+    { "language": "English", "level": "Fluent" },
+    { "language": "Spanish", "level": "Native" }
+  ]
+}

@@ -1,0 +1,31 @@
+---
+import type { CVData } from '@/types/cv'
+import CVHeader from '@/components/templates/default/CVHeader.astro'
+import Contact from '@/components/templates/default/Contact.astro'
+import Skills from '@/components/templates/default/Skills.astro'
+import Languages from '@/components/templates/default/Languages.astro'
+import Profile from '@/components/templates/default/Profile.astro'
+import Experience from '@/components/templates/default/Experience.astro'
+import Education from '@/components/templates/default/Education.astro'
+import '@/styles/templates/default.css'
+
+interface Props {
+  cv: CVData
+}
+
+const { cv } = Astro.props
+---
+
+<div class='cv-container resume-container'>
+  <aside class='sidebar cv-bg-subtle'>
+    <CVHeader data={cv.personal} />
+    <Contact data={cv.personal} />
+    <Skills data={cv.skills} />
+    <Languages data={cv.languages} />
+  </aside>
+  <main class='main-content bg-white'>
+    <Profile summary={cv.summary} />
+    <Experience experience={cv.experience} />
+    <Education education={cv.education} />
+  </main>
+</div>

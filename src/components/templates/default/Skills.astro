@@ -1,0 +1,22 @@
+---
+import type { SkillsProps } from '@/types/cv'
+
+interface Props extends SkillsProps {}
+const { data } = Astro.props
+---
+
+<section class='skills cv-mb-3xl'>
+  <h2>Expertise</h2>
+  {
+    Object.entries(data).map(([category, skills]) => (
+      <div class='skill-category cv-mb-xl'>
+        <h3 class='cv-text-sm font-semibold cv-mb-sm cv-text-primary'>
+          {category}
+        </h3>
+        <p class='skill-list cv-text-xs leading-relaxed cv-text-secondary'>
+          {skills.join(', ')}
+        </p>
+      </div>
+    ))
+  }
+</section>
