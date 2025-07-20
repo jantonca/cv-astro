@@ -11,6 +11,8 @@ npm run dev
 
 • Copy `src/data/cv.example.json` to `src/data/cv.json` and edit with your information
 
+> **🔒 Privacy Note**: Your personal `cv.json` file is automatically excluded from git commits via `.gitignore` to protect your private information. The application will automatically fall back to example data when `cv.json` is not available (e.g., in CI/CD environments).
+
 ## Deployment
 
 ```bash
