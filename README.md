@@ -4,34 +4,26 @@ A static portfolio/CV landing page built with Astro and Tailwind CSS. Generate b
 
 ## Setup
 
+Prerequisites:
+
+- Node.js 22 or newer
+- pnpm 11
+
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-• Copy `src/data/cv.example.json` to `src/data/cv.json` and edit with your information
+- Copy `src/data/cv.example.json` to `src/data/cv.json` and edit with your information.
+- Open [http://localhost:4321](http://localhost:4321) to view your resume.
 
 > **🔒 Privacy Note**: Your personal `cv.json` file is automatically excluded from git commits via `.gitignore` to protect your private information. The application will automatically fall back to example data when `cv.json` is not available (e.g., in CI/CD environments).
 
-## Deployment
-
-```bash
-npm run build
-```
-
-• Deploy the `dist/` folder to Netlify, Vercel, or any static hosting service
-
 ## Customization
 
-• **Content**: Edit `src/data/cv.json` with your personal/professional information
-• **Styling**: Modify Tailwind classes in `.astro` components or `src/styles/` files
-• **Templates**: Create new layouts in `src/layouts/templates/` and components in `src/components/templates/`
-
-3. **Start development server**
-   ```bash
-   pnpm dev
-   ```
-   Open [http://localhost:4321](http://localhost:4321) to view your resume.
+- **Content**: Edit `src/data/cv.json` with your personal/professional information.
+- **Styling**: Modify Tailwind classes in `.astro` components or `src/styles/` files.
+- **Templates**: Create new layouts in `src/layouts/templates/` and components in `src/components/templates/`.
 
 ## Configuration
 
@@ -64,8 +56,10 @@ Your CV data should include:
 | :------------- | :----------------------------------------- |
 | `pnpm install` | Install dependencies                       |
 | `pnpm dev`     | Start development server at localhost:4321 |
+| `pnpm check`   | Run Astro diagnostics and type checks      |
 | `pnpm build`   | Build production site to `./dist/`         |
 | `pnpm preview` | Preview build locally before deploying     |
+| `pnpm audit`   | Check installed packages for advisories    |
 
 ## Printing
 
@@ -95,7 +89,7 @@ To print your CV as a professional single-page PDF:
 
 ### GitHub Pages (Automatic)
 
-This repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on every push to the `main` branch.
+This repository includes a GitHub Actions workflow that checks and deploys to GitHub Pages on every push to the `main` branch. The workflow uses Node.js 22 and pnpm 11 to match the local dependency graph.
 
 **To enable GitHub Pages deployment:**
 
@@ -107,14 +101,21 @@ Your resume will be available at: `https://yourusername.github.io/repository-nam
 
 ### Manual Deployment
 
-After building with `pnpm build`, you can also deploy the `dist/` folder to any static hosting service:
+Before deploying manually, run:
+
+```bash
+pnpm check
+pnpm build
+```
+
+Then deploy the `dist/` folder to any static hosting service:
 
 - Vercel
 - Netlify
 - AWS S3
 - Firebase Hosting
 
-## Customization
+## Template Extension
 
 - **Templates**: Add new layouts in `src/layouts/templates/`. Currently available:
   - `DefaultLayout.astro` - Clean sidebar layout
