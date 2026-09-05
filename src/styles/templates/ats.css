@@ -16,44 +16,54 @@
   color: #1a1a1a;
   font-family: Arial, Helvetica, 'Liberation Sans', sans-serif;
   font-size: 10.5pt;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .ats-header {
-  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #1a1a1a;
+  padding-bottom: 0.55rem;
+  margin-bottom: 1.05rem;
 }
 
 .ats-name {
-  font-size: 20pt;
+  font-size: 22pt;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  margin: 0 0 0.15rem;
+  letter-spacing: 0;
+  margin: 0 0 0.1rem;
 }
 
 .ats-title {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: 600;
+  color: #333333;
+  letter-spacing: 0.02em;
   margin: 0 0 0.4rem;
 }
 
 .ats-contact {
   font-size: 9.5pt;
+  color: #333333;
   margin: 0;
   word-spacing: 0.05em;
 }
 
 .ats-section {
-  margin-bottom: 1.35rem;
+  margin-bottom: 1rem;
 }
 
 .ats-section h2 {
-  font-size: 11pt;
+  font-size: 10pt;
   font-weight: 700;
   text-transform: uppercase;
+  /*
+   * Tracking stays at 0.06em. Wider values (0.1em+) make pdftotext insert a
+   * space between every character, so "EDUCATION" extracts as "E D U C AT I O N"
+   * and an ATS can no longer match the section heading. Do not increase.
+   */
   letter-spacing: 0.06em;
-  border-bottom: 1px solid #999999;
-  padding-bottom: 0.15rem;
-  margin: 0 0 0.6rem;
+  border-bottom: 1px solid #cfcfcf;
+  padding-bottom: 0.2rem;
+  margin: 0 0 0.55rem;
 }
 
 .ats-section p {
@@ -61,24 +71,52 @@
 }
 
 .ats-entry {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
+/*
+ * Role and dates share one line via inline flow, NOT grid or float. This keeps
+ * them in a single text run, so a parser extracts
+ * "Senior Frontend Engineer — Rotor Studios · Nov 2023 - Present" together and
+ * can associate role, employer and dates. A grid places the date in a separate
+ * run that pdftotext emits after the bullet list, breaking that association.
+ */
 .ats-entry h3 {
+  display: inline;
   font-size: 10.5pt;
   font-weight: 700;
-  margin: 0 0 0.1rem;
+  margin: 0;
 }
 
 .ats-meta {
+  display: inline;
   font-size: 9.5pt;
-  margin: 0 0 0.3rem !important;
+  color: #555555;
+  margin: 0 !important;
+}
+
+.ats-meta::before {
+  content: ' \00b7 ';
+}
+
+.ats-entry > ul {
+  margin-top: 0.25rem;
+}
+
+.ats-entry > p:not(.ats-meta) {
+  font-size: 9.5pt;
+  color: #555555;
+  margin: 0.1rem 0 0;
 }
 
 .ats-section ul {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 1rem;
   list-style: disc;
+}
+
+.ats-section li {
+  margin-bottom: 0.16rem;
 }
 
 .ats-section li {
@@ -100,17 +138,26 @@
     margin: 1cm 1.2cm;
   }
 
-  /* Tightened for print so a one-page CV does not spill a stray third page. */
+  /* Tightened for print so the CV holds one page. */
   .ats-section {
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
   }
 
   .ats-entry {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.45rem;
   }
 
   .ats-header {
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .ats-section h2 {
+    margin-bottom: 0.42rem;
+  }
+
+  .ats-section li {
+    margin-bottom: 0.08rem;
   }
 
   /*
@@ -134,6 +181,7 @@
     margin: 0;
     padding: 0;
     font-size: 10pt;
+    line-height: 1.42;
   }
 
   /* Keep a role and its bullets together across a page break. */
