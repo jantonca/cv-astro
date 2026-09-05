@@ -1,0 +1,28 @@
+---
+import type { Project } from '@/types/cv'
+
+interface Props {
+  projects: Project[]
+}
+const { projects } = Astro.props
+---
+
+<section class='eg-sec'>
+  <h2 class='eg-label'>Open source &amp; selected work</h2>
+  {
+    projects.map((item) => (
+      <article class='eg-entry'>
+        <h3 class='eg-entry-title'>{item.name}</h3>
+        <p class='eg-entry-meta'>
+          {item.role}
+          {item.meta && <> &nbsp;—&nbsp; {item.meta}</>}
+        </p>
+        <ul class='eg-bullets'>
+          {item.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </article>
+    ))
+  }
+</section>

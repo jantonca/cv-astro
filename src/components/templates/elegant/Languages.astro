@@ -1,0 +1,20 @@
+---
+import type { LanguagesProps } from '@/types/cv'
+
+interface Props extends LanguagesProps {}
+const { data } = Astro.props
+---
+
+<section class='eg-sec'>
+  <h2 class='eg-label'>Languages</h2>
+  <div class='eg-rows'>
+    {
+      data.map((language) => (
+        <div class='eg-row'>
+          <span>{language.language}</span>
+          <span class='eg-muted'>{language.level}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>

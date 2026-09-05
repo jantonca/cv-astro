@@ -1,0 +1,28 @@
+---
+import type { Experience } from '@/types/cv'
+
+interface Props {
+  experience: Experience[]
+  heading?: string
+}
+const { experience, heading = 'Work experience' } = Astro.props
+---
+
+<section class='eg-sec'>
+  <h2 class='eg-label'>{heading}</h2>
+  {
+    experience.map((item) => (
+      <article class='eg-entry'>
+        <h3 class='eg-entry-title'>{item.title}</h3>
+        <p class='eg-entry-meta'>
+          {item.company} &nbsp;—&nbsp; {item.duration}
+        </p>
+        <ul class='eg-bullets'>
+          {item.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </article>
+    ))
+  }
+</section>

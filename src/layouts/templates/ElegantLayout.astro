@@ -1,0 +1,94 @@
+---
+import type { CVData } from '@/types/cv'
+import ContactStrip from '@/components/templates/elegant/ContactStrip.astro'
+import Masthead from '@/components/templates/elegant/Masthead.astro'
+import TitleBar from '@/components/templates/elegant/TitleBar.astro'
+import SkillChips from '@/components/templates/elegant/SkillChips.astro'
+import Languages from '@/components/templates/elegant/Languages.astro'
+import Experience from '@/components/templates/elegant/Experience.astro'
+import Education from '@/components/templates/elegant/Education.astro'
+import Projects from '@/components/templates/elegant/Projects.astro'
+import '@/styles/templates/elegant.css'
+
+interface Props {
+  cv: CVData
+}
+
+const { cv } = Astro.props
+
+/*
+ * Fixed A4 pages cannot reflow, so the split is explicit rather than
+ * automatic: whatever does not fit would be clipped, not carried over.
+ * Raise or lower this if the roles change length.
+ */
+const ROLES_ON_PAGE_ONE = 2
+const rolesPageOne = cv.experience.slice(0, ROLES_ON_PAGE_ONE)
+const rolesPageTwo = cv.experience.slice(ROLES_ON_PAGE_ONE)
+---
+
+<div class='eg-doc'>
+  <article class='eg-page'>
+   <div class='eg-sheet'>
+    <ContactStrip data={cv.personal} />
+    <div class='eg-hairline'></div>
+    <Masthead data={cv.personal} summary={cv.summary} />
+    <TitleBar data={cv.personal} />
+    <div class='eg-cols'>
+      <div class='eg-aside'>
+        <SkillChips data={cv.skills} />
+        <Languages data={cv.languages} />
+      </div>
+      <div class='eg-main'>
+        <Experience experience={rolesPageOne} />
+      </div>
+    </div>
+   </div>
+  </article>
+
+  <article class='eg-page'>
+   <div class='eg-sheet'>
+    <ContactStrip data={cv.personal} />
+    <div class='eg-gap'></div>
+    <div class='eg-cols'>
+      <div class='eg-aside'>
+        <Education education={cv.education} />
+      </div>
+      <div class='eg-main'>
+        {
+          rolesPageTwo.length > 0 && (
+            <Experience
+              experience={rolesPageTwo}
+              heading='Work experience (continued)'
+            />
+          )
+        }
+        {cv.projects && cv.projects.length > 0 && <Projects projects={cv.projects} />}
+      </div>
+    </div>
+    <footer class='eg-foot'>
+      <span>{cv.personal.name} — {cv.personal.title}</span>
+      <span>Page 2 of 2</span>
+    </footer>
+   </div>
+  </article>
+</div>
+
+<style is:global>
+  /*
+   * global.css sets `@page { margin: 0.5cm }` and forces a white print
+   * background for the classic single-page template. This design is
+   * full-bleed, so both are overridden here — from the layout rather than
+   * the stylesheet, so these rules are emitted last and actually win.
+   */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    html,
+    body {
+      background: #f7f0e1 !important;
+    }
+  }
+</style>

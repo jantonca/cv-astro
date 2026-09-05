@@ -1,9 +1,21 @@
 import type { TemplateConfig } from '@/types/templates'
 
 export const TEMPLATES: Record<string, TemplateConfig> = {
+  /*
+   * `default` is the elegant two-page design; `classic` is the original
+   * sidebar layout. The component folders still carry their original names
+   * (`templates/default/` backs `classic`) — renaming them is a separate,
+   * purely cosmetic change.
+   */
   default: {
     name: 'default',
-    displayName: 'Default Template',
+    displayName: 'Elegant Template',
+    description:
+      'Two-page A4 design on a warm ground: contact strip, outlined title bar, chip skills',
+  },
+  classic: {
+    name: 'classic',
+    displayName: 'Classic Template',
     description: 'Clean and professional CV template with sidebar layout',
   },
   ats: {

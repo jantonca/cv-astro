@@ -1,0 +1,22 @@
+---
+import type { SkillsProps } from '@/types/cv'
+
+interface Props extends SkillsProps {}
+const { data } = Astro.props
+---
+
+<section class='eg-sec'>
+  <h2 class='eg-label'>Core skills</h2>
+  {
+    Object.entries(data).map(([category, skills]) => (
+      <div class='eg-skillgroup'>
+        <h3 class='eg-skillhead'>{category}</h3>
+        <div class='eg-chips'>
+          {skills.map((skill) => (
+            <span class='eg-skillchip'>{skill}</span>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</section>

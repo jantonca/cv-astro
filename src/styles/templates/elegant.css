@@ -1,0 +1,356 @@
+/*
+ * Elegant template — two fixed A4 pages on a warm ground.
+ *
+ * Two rules that are easy to break by accident:
+ *   1. Heading letter-spacing stays at or below 0.06em. Wider tracking makes
+ *      pdftotext insert a space between every character, so "EDUCATION"
+ *      extracts as "E D U C AT I O N" and an ATS cannot match the heading.
+ *   2. Pages must never rely on overflow:hidden to appear to fit. Content that
+ *      does not fit has to be moved to the next page (see ROLES_ON_PAGE_ONE in
+ *      ElegantLayout) rather than silently clipped.
+ */
+
+:root {
+  --eg-cream: #f7f0e1;
+  --eg-ink: #16233f;
+  --eg-navy: #16305c;
+  --eg-muted: #6b6a63;
+  --eg-rule: #c9bfa8;
+}
+
+.eg-doc {
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+  color: var(--eg-ink);
+  font-size: 11.5px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.eg-sheet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 46px;
+}
+
+.eg-page {
+  /* 794 x 1123 px is exactly A4 at 96dpi, which is what Chromium prints at
+     with @page margin: 0. Do not mix mm here with px padding. */
+  width: 794px;
+  min-height: 1123px;
+  background: var(--eg-cream);
+  /* No padding on the painted element: some print paths fill only the content
+     box, which leaves a white frame. The inner sheet carries the padding. */
+  padding: 0;
+  margin: 0 auto 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- contact strip --- */
+.eg-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  /* Must fit the 702px content width. If it overflows, Chromium shrink-to-fits
+     the whole page and the design no longer bleeds to the paper edge. */
+  width: 100%;
+}
+
+.eg-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.4px;
+  line-height: 1;
+  color: #3c3b34;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.eg-ico {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--eg-navy);
+  color: var(--eg-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eg-ico svg {
+  width: 8.5px;
+  height: 8.5px;
+}
+
+.eg-hairline {
+  height: 1px;
+  background: var(--eg-rule);
+  margin: 16px 0 26px;
+}
+
+.eg-gap {
+  height: 40px;
+}
+
+/* --- masthead --- */
+.eg-masthead {
+  display: grid;
+  grid-template-columns: 296px 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+.eg-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.eg-summary {
+  font-size: 11.5px;
+  line-height: 1.66;
+  color: #3c3b34;
+  margin: 9px 0 0;
+}
+
+/* --- title bar --- */
+.eg-titlebar {
+  display: grid;
+  grid-template-columns: 1fr 214px;
+  gap: 14px;
+  margin: 26px 0 28px;
+}
+
+.eg-role,
+.eg-place {
+  border: 1px solid var(--eg-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.eg-role {
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.eg-place {
+  padding: 12px 8px;
+  gap: 7px;
+  font-size: 9.5px;
+  line-height: 1.45;
+}
+
+.eg-pin {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+/* --- columns --- */
+.eg-cols {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  gap: 34px;
+  flex: 1;
+}
+
+.eg-aside {
+  border-right: 1px solid var(--eg-rule);
+  padding-right: 34px;
+}
+
+/* --- sections --- */
+.eg-sec {
+  margin-bottom: 22px;
+}
+
+.eg-label {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em; /* see note at top of file */
+  text-transform: uppercase;
+  color: var(--eg-ink);
+  /* The rule underlines the heading directly. A detached rule below it reads
+     as a second line, not an underline. */
+  border-bottom: 1.5px solid var(--eg-ink);
+  padding-bottom: 9px;
+  margin: 0 0 13px;
+}
+
+.eg-label-sm {
+  font-size: 10px;
+}
+
+/* --- skills --- */
+.eg-skillgroup {
+  margin-bottom: 12px;
+}
+
+.eg-skillhead {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 5px;
+}
+
+.eg-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.eg-skillchip {
+  border: 1px solid var(--eg-rule);
+  border-radius: 2px;
+  padding: 2.5px 6px;
+  font-size: 9.5px;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+/* --- languages --- */
+.eg-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eg-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #3c3b34;
+}
+
+.eg-muted {
+  color: var(--eg-muted);
+}
+
+/* --- entries --- */
+.eg-entry {
+  margin-bottom: 17px;
+}
+
+.eg-entry-compact {
+  margin-bottom: 14px;
+}
+
+.eg-entry-title {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.eg-entry-meta {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--eg-muted);
+  margin: 2px 0 0;
+}
+
+.eg-bullets {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eg-bullets li {
+  position: relative;
+  padding-left: 15px;
+  font-size: 11.5px;
+  line-height: 1.62;
+  color: #3c3b34;
+}
+
+.eg-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--eg-navy);
+}
+
+/* --- footer --- */
+.eg-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--eg-muted);
+  padding-top: 14px;
+  margin-top: auto;
+  border-top: 1px solid var(--eg-rule);
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  /*
+   * global.css sets html, body { height: 100%; overflow: hidden } for the
+   * classic single-page template. That clips anything past page one, so it is
+   * overridden here rather than weakened globally.
+   */
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0;
+    padding: 0;
+    /* The sheet itself is cream so the design bleeds to the paper edge,
+       independent of where the page element lands. print-color-adjust must be
+       set here, not only inherited, or Chromium drops the fill. */
+    background: var(--eg-cream) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .eg-page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0;
+    break-after: page;
+    page-break-after: always;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .eg-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .eg-entry,
+  .eg-skillgroup {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

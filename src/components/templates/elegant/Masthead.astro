@@ -1,0 +1,17 @@
+---
+import type { PersonalInfo } from '@/types/cv'
+
+interface Props {
+  data: PersonalInfo
+  summary: string
+}
+const { data, summary } = Astro.props
+---
+
+<div class='eg-masthead'>
+  <h1 class='eg-name'>{data.name}</h1>
+  <div>
+    <p class='eg-label eg-label-sm'>Professional summary</p>
+    <p class='eg-summary'>{summary}</p>
+  </div>
+</div>

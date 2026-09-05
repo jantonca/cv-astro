@@ -27,3 +27,6 @@ src/data/cv*.json.*
 
 # jetbrains setting folder
 .idea/
+
+# Playwright MCP session artefacts — page snapshots capture rendered CV data
+.playwright-mcp/

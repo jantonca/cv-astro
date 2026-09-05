@@ -152,10 +152,15 @@ body {
     text-decoration: none !important;
   }
 
-  /* Ensure content fits on a single page */
+  /*
+   * Fallback only — every template declares its own @page (classic 0.4/0.5cm,
+   * ats 1/1.2cm, elegant 0 for a full-bleed design). A non-zero margin here
+   * wins over the template stylesheets, which load earlier, and silently
+   * scales a full-page design down to fit.
+   */
   @page {
     size: A4 portrait;
-    margin: 0.5cm;
+    margin: 0;
   }
 
   html,

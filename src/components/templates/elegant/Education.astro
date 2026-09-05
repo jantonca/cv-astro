@@ -1,0 +1,20 @@
+---
+import type { EducationProps } from '@/types/cv'
+
+interface Props extends EducationProps {}
+const { education } = Astro.props
+---
+
+<section class='eg-sec'>
+  <h2 class='eg-label'>Education</h2>
+  {
+    education.map((item) => (
+      <article class='eg-entry eg-entry-compact'>
+        <h3 class='eg-entry-title'>{item.degree}</h3>
+        <p class='eg-entry-meta'>
+          {item.school} &nbsp;—&nbsp; {item.year}
+        </p>
+      </article>
+    ))
+  }
+</section>

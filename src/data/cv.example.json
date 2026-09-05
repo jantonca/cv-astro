@@ -6,7 +6,8 @@
     "location": "Melbourne, Australia",
     "website": "https://example.com",
     "portfolio": "https://portfolio.example.com",
-    "workRights": "Full working rights"
+    "workRights": "Full working rights",
+    "linkedin": "https://www.linkedin.com/in/jane-doe"
   },
   "summary": "Frontend engineer with experience building accessible, maintainable web applications with TypeScript and React. Works closely with design and backend teams to turn product requirements into reliable interfaces.",
   "experience": [
@@ -56,6 +57,17 @@
     {
       "language": "English",
       "level": "Professional"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Example open-source tool",
+      "role": "Creator and maintainer",
+      "meta": "MIT · npm",
+      "highlights": [
+        "What the tool does and the problem it solves.",
+        "Where it is published and any adoption worth citing."
+      ]
     }
   ]
 }

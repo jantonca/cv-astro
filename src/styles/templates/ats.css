@@ -133,9 +133,14 @@
 }
 
 @media print {
+  /*
+   * Margins live on the document, not on @page. All template stylesheets load
+   * on every render, so an @page margin here would also apply to the other
+   * templates — which silently shrank the full-bleed elegant design.
+   */
   @page {
     size: A4 portrait;
-    margin: 1cm 1.2cm;
+    margin: 0;
   }
 
   /* Tightened for print so the CV holds one page. */
@@ -179,7 +184,7 @@
   .ats-document {
     max-width: none;
     margin: 0;
-    padding: 0;
+    padding: 1cm 1.2cm;
     font-size: 10pt;
     line-height: 1.42;
   }

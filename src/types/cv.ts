@@ -7,7 +7,15 @@ export interface PersonalInfo {
   website?: string;
   portfolio?: string;
   github?: string;
+  linkedin?: string;
   workRights?: string;
+}
+
+export interface Project {
+  name: string;
+  role: string;
+  meta?: string;
+  highlights: string[];
 }
 
 export interface Experience {
@@ -36,6 +44,7 @@ export interface CVData {
   education: Education[];
   skills: Record<string, string[]>;
   languages: Language[];
+  projects?: Project[];
 }
 
 // --- Component Prop Types ---

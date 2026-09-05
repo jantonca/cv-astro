@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import ElegantLayout from '@/layouts/templates/ElegantLayout.astro'
 import DefaultLayout from '@/layouts/templates/DefaultLayout.astro'
 import AtsLayout from '@/layouts/templates/AtsLayout.astro'
 // Import other templates here
@@ -12,7 +13,8 @@ const cv: CVData = await loadCVData()
 const templateName = getActiveTemplateName()
 
 const templateLayouts = {
-  default: DefaultLayout,
+  default: ElegantLayout,
+  classic: DefaultLayout,
   ats: AtsLayout,
   // modern: ModernLayout,
   // minimal: MinimalLayout,
