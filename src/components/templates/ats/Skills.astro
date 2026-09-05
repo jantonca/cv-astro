@@ -1,0 +1,17 @@
+---
+import type { SkillsProps } from '@/types/cv'
+
+interface Props extends SkillsProps {}
+const { data } = Astro.props
+---
+
+<section class='ats-section'>
+  <h2>Skills</h2>
+  {
+    Object.entries(data).map(([group, items]) => (
+      <p class='ats-skill-group'>
+        <strong>{group}:</strong> {items.join(', ')}
+      </p>
+    ))
+  }
+</section>

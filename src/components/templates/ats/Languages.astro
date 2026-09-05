@@ -1,0 +1,11 @@
+---
+import type { LanguagesProps } from '@/types/cv'
+
+interface Props extends LanguagesProps {}
+const { data } = Astro.props
+---
+
+<section class='ats-section'>
+  <h2>Languages</h2>
+  <p>{data.map((item) => `${item.language} (${item.level})`).join(', ')}</p>
+</section>

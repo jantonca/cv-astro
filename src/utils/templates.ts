@@ -6,6 +6,12 @@ export const TEMPLATES: Record<string, TemplateConfig> = {
     displayName: 'Default Template',
     description: 'Clean and professional CV template with sidebar layout',
   },
+  ats: {
+    name: 'ats',
+    displayName: 'ATS Template',
+    description:
+      'Single-column, plain-text template optimised for applicant tracking systems',
+  },
 }
 
 export function getAvailableTemplates(): TemplateConfig[] {
@@ -21,6 +27,17 @@ export function isValidTemplate(templateName: string): boolean {
 }
 
 export function getActiveTemplateName(): string {
-  const templateName = import.meta.env.CV_TEMPLATE || 'default'
+  // Vite only exposes prefixed variables on `import.meta.env`, so a bare
+  // CV_TEMPLATE set in the shell or in `.env` never reached this function and
+  // every build silently fell back to 'default'. This module is evaluated
+  // server-side only (page frontmatter), so `process.env` is the reliable
+  // source; `import.meta.env` is kept as a fallback.
+  // Typed locally rather than pulling in @types/node for one lookup.
+  const nodeEnv = (
+    globalThis as { process?: { env?: Record<string, string | undefined> } }
+  ).process?.env
+
+  const templateName =
+    nodeEnv?.CV_TEMPLATE || import.meta.env.CV_TEMPLATE || 'default'
   return isValidTemplate(templateName) ? templateName : 'default'
 }

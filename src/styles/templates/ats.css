@@ -1,0 +1,149 @@
+/*
+ * ATS template — deliberately plain.
+ *
+ * Design goals, in priority order:
+ *   1. One linear column so parsers read content in document order.
+ *   2. Real selectable text in a widely-available font stack.
+ *   3. Contact details in the body flow, understandable without icons.
+ *   4. Content is allowed to flow onto a second page rather than being clipped.
+ */
+
+.ats-document {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: Arial, Helvetica, 'Liberation Sans', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+}
+
+.ats-header {
+  margin-bottom: 1.5rem;
+}
+
+.ats-name {
+  font-size: 20pt;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.15rem;
+}
+
+.ats-title {
+  font-size: 12pt;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.ats-contact {
+  font-size: 9.5pt;
+  margin: 0;
+  word-spacing: 0.05em;
+}
+
+.ats-section {
+  margin-bottom: 1.35rem;
+}
+
+.ats-section h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid #999999;
+  padding-bottom: 0.15rem;
+  margin: 0 0 0.6rem;
+}
+
+.ats-section p {
+  margin: 0 0 0.4rem;
+}
+
+.ats-entry {
+  margin-bottom: 0.85rem;
+}
+
+.ats-entry h3 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  margin: 0 0 0.1rem;
+}
+
+.ats-meta {
+  font-size: 9.5pt;
+  margin: 0 0 0.3rem !important;
+}
+
+.ats-section ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.ats-section li {
+  margin-bottom: 0.22rem;
+}
+
+.ats-skill-group {
+  margin-bottom: 0.25rem !important;
+}
+
+.ats-document a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 1cm 1.2cm;
+  }
+
+  /* Tightened for print so a one-page CV does not spill a stray third page. */
+  .ats-section {
+    margin-bottom: 1rem;
+  }
+
+  .ats-entry {
+    margin-bottom: 0.6rem;
+  }
+
+  .ats-header {
+    margin-bottom: 1.1rem;
+  }
+
+  /*
+   * global.css forces the single-page visual template with
+   * `html, body { height: 100%; overflow: hidden }`. That silently CLIPS any
+   * content past page one, which is unacceptable for an ATS document — it must
+   * paginate instead. Override it here rather than weakening the global rule
+   * the default template depends on.
+   */
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .ats-document {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
+  }
+
+  /* Keep a role and its bullets together across a page break. */
+  .ats-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .ats-section h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}

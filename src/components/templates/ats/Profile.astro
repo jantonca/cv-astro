@@ -1,0 +1,11 @@
+---
+import type { ProfileProps } from '@/types/cv'
+
+interface Props extends ProfileProps {}
+const { summary } = Astro.props
+---
+
+<section class='ats-section'>
+  <h2>Professional Summary</h2>
+  <p>{summary}</p>
+</section>

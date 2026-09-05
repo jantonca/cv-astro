@@ -12,8 +12,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Personal data
-src/data/cv.json
+# Personal data — ignore every CV data file and any backup/variant,
+# but keep the public example tracked.
+src/data/cv*.json
+src/data/cv*.json.*
+!src/data/cv.example.json
 
 # environment variables
 .env

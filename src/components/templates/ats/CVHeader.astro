@@ -1,0 +1,24 @@
+---
+import type { CVHeaderProps } from '@/types/cv'
+
+interface Props extends CVHeaderProps {}
+const { data } = Astro.props
+
+// Contact details are emitted as one plain-text line separated by bullets so a
+// parser reads them in order without depending on icons, columns or list markup.
+const contactParts = [
+  data.email,
+  data.phone,
+  data.location,
+  data.workRights,
+  data.website?.replace(/^https?:\/\/(www\.)?/, ''),
+  data.github?.replace(/^https?:\/\/(www\.)?/, ''),
+  data.portfolio?.replace(/^https?:\/\/(www\.)?/, ''),
+].filter(Boolean) as string[]
+---
+
+<header class='ats-header'>
+  <h1 class='ats-name'>{data.name}</h1>
+  <p class='ats-title'>{data.title}</p>
+  <p class='ats-contact'>{contactParts.join(' | ')}</p>
+</header>

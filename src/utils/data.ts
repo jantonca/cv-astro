@@ -6,9 +6,10 @@ const dataFiles = import.meta.glob('../data/*.json') as Record<
 >
 
 export async function loadCVData(): Promise<CVData> {
-  const isDemo =
-    import.meta.env.CV_TEMPLATE !== undefined ||
-    import.meta.env.MODE === 'production'
+  // Production builds always publish the sample data — that is what keeps real
+  // personal details out of the public GitHub Pages deploy. Template choice is
+  // a presentation concern and must not affect which data file is loaded.
+  const isDemo = import.meta.env.MODE === 'production'
 
   if (!isDemo && dataFiles['../data/cv.json']) {
     try {

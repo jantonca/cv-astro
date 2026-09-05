@@ -27,6 +27,13 @@ const { data } = Astro.props
       )
     }
     {
+      data.workRights && (
+        <li class='flex items-center cv-gap-sm cv-text-secondary'>
+          {data.workRights}
+        </li>
+      )
+    }
+    {
       data.website && (
         <li class='flex items-center cv-gap-sm cv-text-secondary'>
           <a

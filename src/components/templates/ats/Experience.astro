@@ -1,0 +1,25 @@
+---
+import type { ExperienceProps } from '@/types/cv'
+
+interface Props extends ExperienceProps {}
+const { experience } = Astro.props
+---
+
+<section class='ats-section'>
+  <h2>Professional Experience</h2>
+  {
+    experience.map((item) => (
+      <article class='ats-entry'>
+        <h3>
+          {item.title} — {item.company}
+        </h3>
+        <p class='ats-meta'>{item.duration}</p>
+        <ul>
+          {item.highlights.map((highlight) => (
+            <li>{highlight}</li>
+          ))}
+        </ul>
+      </article>
+    ))
+  }
+</section>
